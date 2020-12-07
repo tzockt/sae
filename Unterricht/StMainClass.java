@@ -6,6 +6,7 @@ public class StMainClass{
         StClass.stMethode();
         System.out.println(StClass.i);
     }
+    
+    }
         
     
-}
