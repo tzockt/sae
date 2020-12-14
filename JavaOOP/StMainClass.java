@@ -1,4 +1,4 @@
-package Unterricht;
+package JavaOOP;
 public class StMainClass{
     public static void main(String[] args) 
     {
