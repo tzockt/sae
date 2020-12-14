@@ -1,4 +1,4 @@
-package JavaOOP;
+package test;
 public class StMainClass{
     public static void main(String[] args) 
     {
