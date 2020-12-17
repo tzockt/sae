@@ -43,7 +43,7 @@ public class Konto {
     public double getKStand() {
         return kStand;
     }
-    public void setkNr(){
+    public void setkNr(String kNr){
         this.kNr = kNr;
     }
     public String getKInhaber(){
