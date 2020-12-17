@@ -4,18 +4,18 @@ public class Konto {
     private String kNr;
     private String kInhaber;
     private double kStand;
-    private static int counter=0;
+    private static int kcounter=0;
 
     public Konto()
     { kStand=0;
-      counter++;
+      kcounter++;
      }
 
     public Konto(String kInhaber, String kNr, double kStand)
     { this.kInhaber=kInhaber;
     this.kNr=kNr;
     this.kStand=kStand;
-    counter++;
+    kcounter++;
     }
 
     public void einzahlen(double betrag) {
@@ -41,7 +41,7 @@ public class Konto {
     public void setKInhaber(String kInhaber){
         this.kInhaber=kInhaber;
     }
-    public int getCounter(){
-        return counter;
+    public static int getCounter(){
+        return kcounter;
     }
 }

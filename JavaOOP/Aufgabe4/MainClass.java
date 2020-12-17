@@ -10,6 +10,7 @@ System.out.println("Kontostand k1: "+k1.getKStand());
 k1.auszahlen(100);
 System.out.println("Kontostand k1: "+k1.getKStand());
 System.out.println("Kontostand k2: "+k2.getKStand());
+System.out.println("Anzahl der Konten: "+Konto.getCounter());
 }
 
 }
