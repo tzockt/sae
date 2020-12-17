@@ -1,13 +1,27 @@
 package JavaOOP.Aufgabe4;
 
 public class Konto {
+    
     private String kNr;
     private String kInhaber;
     private double kStand;
     private static int kcounter=0;
 
+    private String[] konto = new String[3];
+
     public Konto()
     { kStand=0;
+        
+        //Kontonummer
+        konto[0] = "40223307";
+
+        //Kontoinhaber
+        konto[1] = "Tim der Java Profi";
+
+        //Kontostand
+        konto[2] = Double.toString(kStand);
+
+
       kcounter++;
      }
 
