@@ -10,7 +10,7 @@ public class rechner {
 
 
     public rechner(String rechnername, String mac, String domain, String ip, String standort){
-        this.rechnername = rechnername
+        this.rechnername = rechnername;
         this.mac = mac;
         this.domain = domain;
         this.standort = standort;
@@ -61,6 +61,6 @@ public class rechner {
 
     //Ausgabe
     public void ausgabe(){
-        System.out.println(\n"Die Daten des PCs lauten wie folgt: " + "\nComputername: " + rechnername + "\nMAC-Adresse: " + mac + "\nDomain: " + domain + "\nIP-Adresse: " + ip + "\nStandort: " + standort);
+        System.out.println("\nDie Daten des PCs lauten wie folgt: " + "\nComputername: " + rechnername + "\nMAC-Adresse: " + mac + "\nDomain: " + domain + "\nIP-Adresse: " + ip + "\nStandort: " + standort);
     }
 }
