@@ -1,1 +1,5 @@
-JavaOOP.OOP2.Aufgabe2
+package JavaOOP.OOP2.Aufgabe2neu;
+
+public class main {
+    
+}
