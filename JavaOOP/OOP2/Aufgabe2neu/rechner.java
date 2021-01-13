@@ -64,4 +64,3 @@ public class rechner {
         System.out.println(\n"Die Daten des PCs lauten wie folgt: " + "\nComputername: " + rechnername + "\nMAC-Adresse: " + mac + "\nDomain: " + domain + "\nIP-Adresse: " + ip + "\nStandort: " + standort);
     }
 }
-
