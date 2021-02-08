@@ -1,4 +1,4 @@
-package JavaOOP.LoesungAufgabe4;
+package JavaOOP.OOP1.LoesungAufgabe4;
 
 import java.util.ArrayList;
 

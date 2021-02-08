@@ -1,4 +1,4 @@
-package JavaOOP.test;
+package JavaOOP.OOP1.test;
 
 public class StClass
 {

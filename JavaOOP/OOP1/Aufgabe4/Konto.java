@@ -1,4 +1,4 @@
-package JavaOOP.Aufgabe4;
+package JavaOOP.OOP1.Aufgabe4;
 
 public class Konto {
     
