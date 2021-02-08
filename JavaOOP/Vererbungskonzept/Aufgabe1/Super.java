@@ -30,6 +30,5 @@ public class Sub extends Super{
         System.out.println ("x " + x ) ;
         System.out.println ("y =" + y ) ;
     }
-    
 }
 
