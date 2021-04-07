@@ -1,5 +1,7 @@
 # SQL Aufgabe Academy
 
+[W3Schools Link](https://www.w3schools.com/sql/default.asp)
+
 ## 1. Listen Sie alle Datensätze der Tabelle "Lehrgangsort" auf
 
 ```sql
@@ -44,25 +46,25 @@ SELECT Dozent.Nachname FROM Dozent WHERE Dozent.Stundensatz > 60.0 ORDER BY Doze
 ## 5. Bei welchen Lehrgängen liegen die Gesamtkosten unter 250,00 €
 
 ```sql
-
+SELECT Lehrgang.idLehrgang FROM Lehrgang RIGHT JOIN Inhalt ON Lehrgang.fkInhalt = Inhalt.idInhalt WHERE 250 > (Inhalt.Stundensatz*Inhalt.Dauer)
 ```
 
 ## 6. Geben Sie alle Teilnehmer aus, deren Namen mit "B" beginnen
 
 ```sql
-
+SELECT Nachname From Teilnehmer WHERE Nachname LIKE "B%"
 ```
 
 ## 7. Listen Sie Inhalt und Dauer aller Lehrgänge auf, deren Dauer zwischen 16 und 32 Unterrichtseinheiten liegt
 
 ```sql
-
+SELECT Beschreibung , Dauer From Inhalt where Dauer BETWEEN 16 and 32
 ```
 
 ## 8. Geben Sie alle Spalten der Tabelle "Ort" aus, deren Orte "Köln" oder "Bonn" sind
 
 ```sql
-
+SELECT * From Ort where Ortsname LIKE "Bonn" OR Ortsname  LIKE "Köln"
 ```
 
 ## 9. Ermitteln Sie die Teilnehmer, die aus dem PLZ-Bereich 5xxxx kommen und deren Namen mit "A" oder "B" beginnen
