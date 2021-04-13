@@ -70,7 +70,7 @@ SELECT * From Ort where Ortsname LIKE "Bonn" OR Ortsname  LIKE "Köln"
 ## 9. Ermitteln Sie die Teilnehmer, die aus dem PLZ-Bereich 5xxxx kommen und deren Namen mit "A" oder "B" beginnen
 
 ```sql
-
+SELECT Nachname , fkOrt FROM Teilnehmer WHERE fkOrt LIKE "5%" AND Nachname LIKE "A%" OR Nachname LIKE "B%"
 ```
 
 ## 10. Wie viele Teilnehmer kommen aus den jeweiligen Städten?
