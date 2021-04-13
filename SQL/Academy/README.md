@@ -76,13 +76,13 @@ SELECT Nachname , fkOrt FROM Teilnehmer WHERE fkOrt LIKE "5%" AND Nachname LIKE 
 ## 10. Wie viele Teilnehmer kommen aus den jeweiligen Städten?
 
 ```sql
-
+select COUNT(*) as "Anzahl" , Ort.Ortsname from Ort group by Ort.Ortsname 
 ```
 
 ## 11. Aus welcher Stadt kommen mehr als 2 Teilnehmer?
 
 ```sql
-
+SELECT COUNT(*) as "anzahl", Ort.Ortsname from Teilnehmer JOIN Ort ON Teilnehmer.fkOrt = Ort.idOrt group by Teilnehmer.fkOrt HAVING COUNT(*) > 2
 ```
 
 # Abfragen über verknüpfte Tabellen
@@ -90,35 +90,35 @@ SELECT Nachname , fkOrt FROM Teilnehmer WHERE fkOrt LIKE "5%" AND Nachname LIKE 
 ## 12. Erstellen Sie eine Liste aller Teilnehmer mit Ortsnamen
 
 ```sql
-
+SELECT Nachname, Ortsname From Teilnehmer Join Ort on Teilnehmer.fkOrt = Ort.idOrt 
 ```
 
 ## 13. Ermitteln Sie den Kursbeginn der Kurse, die von Dozent "Hamblen" gehalten werden
 
 ```sql
-
+SELECT Beginn, Nachname From Lehrgang Join Dozent ON Lehrgang.fkDozent = Dozent.idDozent HAVING Nachname = "Hamblen"
 ```
 
 ## 14. Ermitteln Sie alle Dozenten, deren Stundensatz über dem von Dozent "Schult" liegt
 
 ```sql
-
+SELECT Nachname, Stundensatz FROM Dozent where Dozent.Stundensatz > 65
 ```
 
 ## 15. Listen Sie alle Teilnehmer mit Lehrgangsbeginn sowie dem jeweiligen Dozenten auf
 
 ```sql
-
+SELECT l.Beginn, d.Nachname as "Dozent", th.Nachname FROM Lehrgang l RIGHT JOIN Dozent d ON l.fkDozent = d.idDozent RIGHT JOIN Teilnahme tn ON l.idLehrgang = tn.fkLehrgang RIGHT JOIN Teilnehmer th ON tn.fkTeilnehmer = th.idTeilnehmer
 ```
 
 ## 16. Listen Sie alle Teilnehmer mit Name, PLZ und Ort auf, die einen Kurs bei "Schult" besuchen
 
 ```sql
-
+SELECT t2.Nachname, t2.fkOrt as "PLZ", o.Ortsname, d.Nachname as "Dozent" FROM Lehrgang l RIGHT JOIN Dozent d ON l.fkDozent = d.idDozent RIGHT JOIN Teilnahme t ON l.idLehrgang = t.fkLehrgang RIGHT JOIN Teilnehmer t2 ON t.fkTeilnehmer = t2.idTeilnehmer RIGHT JOIN Ort o ON t2.fkOrt = o.idOrt WHERE  d.Nachname = "Schult"
 ```
 
 ## 17. Listen Sie für alle Dozenten den Lehrgangsbeginn ihrer Kurse auf. Dozenten, welche keine Lehrgänge anbieten, sollen auch ausgegeben werden
 
 ```sql
-
+SELECT d.Nachname , l.Beginn FROM Dozent d RIGHT JOIN Lehrgang l on d.idDozent = l.fkDozent ....?
 ```
