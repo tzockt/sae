@@ -78,7 +78,7 @@ SELECT Nachname , fkOrt FROM Teilnehmer WHERE fkOrt LIKE "5%" AND Nachname LIKE 
 ### 10. Wie viele Teilnehmer kommen aus den jeweiligen Städten?
 
 ```sql
-select COUNT(*) as "Anzahl" , Ort.Ortsname from Ort group by Ort.Ortsname 
+SELECT COUNT(*) as "anzahl", Ort.Ortsname from Teilnehmer JOIN Ort ON Teilnehmer.fkOrt = Ort.idOrt group by Teilnehmer.fkOrt 
 ```
 
 ### 11. Aus welcher Stadt kommen mehr als 2 Teilnehmer?
