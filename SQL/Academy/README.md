@@ -107,6 +107,7 @@ SELECT Beginn, Nachname From Lehrgang Join Dozent ON Lehrgang.fkDozent = Dozent.
 
 ```sql
 SELECT Nachname, Stundensatz FROM Dozent where Dozent.Stundensatz > 65
+SELECT Nachname, Stundensatz FROM Dozent WHERE Stundensatz > (SELECT Stundensatz from Dozent WHERE Nachname LIKE 'Schult')
 ```
 
 ### 15. Listen Sie alle Teilnehmer mit Lehrgangsbeginn sowie dem jeweiligen Dozenten auf
