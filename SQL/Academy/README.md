@@ -84,7 +84,9 @@ SELECT COUNT(*) as "anzahl", Ort.Ortsname from Teilnehmer JOIN Ort ON Teilnehmer
 ### 11. Aus welcher Stadt kommen mehr als 2 Teilnehmer?
 
 ```sql
-SELECT COUNT(*) as "anzahl", Ort.Ortsname from Teilnehmer JOIN Ort ON Teilnehmer.fkOrt = Ort.idOrt group by Teilnehmer.fkOrt HAVING COUNT(*) > 2
+Kompliziert: SELECT COUNT(*) as "anzahl", Ort.Ortsname from Teilnehmer JOIN Ort ON Teilnehmer.fkOrt = Ort.idOrt group by Teilnehmer.fkOrt HAVING COUNT(*) > 2
+
+Einfach: SELECT fkOrt, COUNT(*) FROM Teilnehmer GROUP BY fkORT HAVING COUNT(*) > 2;
 ```
 
 ## Abfragen über verknüpfte Tabellen
