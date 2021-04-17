@@ -5,31 +5,31 @@
 ### 1. Erstellen Sie eine Übersicht aller gespeicherten Bestelldaten
 
 ```sql
-
+SELECT * FROM bestellungen
 ```
 
 ### 2. Geben Sie alle Lieferanteninformationen nach Namen aufsteigend sortiert aus
 
 ```sql
-
+SELECT * FROM lieferanten ORDER BY LFR_NAME ASC 
 ```
 
 ### 3. Listen Sie die verschiedenen Farben der Pflanzenblüten auf
 
 ```sql
-
+SELECT PFL_FARBE FROM pflanzen
 ```
 
 ### 4. Listen Sie die verschiedenen Farben der Pflanzenblüten sortiert auf. Allerdings sollen Nullwerte nicht ausgegeben werden
 
 ```sql
-
+SELECT PFL_FARBE FROM pflanzen WHERE PFL_FARBE IS NOT NULL ORDER BY PFL_FARBE ASC
 ```
 
 ### 5. Welche Pflanzensorten bietet BLUMA den Kunden an? Diese Sorten sollen alphabetisch absteigend sortiert ausgegeben werden
 
 ```sql
-
+SELECT PFL_SORTE FROM pflanzen ORDER BY PFL_SORTE ASC 
 ```
 
 ### 6. Wie viele Pflanzen und Pflanzensorten hat BLUMA im Angebot?
@@ -134,7 +134,7 @@
 
 ```
 
-# Gruppieren
+## Gruppieren
 
 ### 23. Alle Bestellungen (Bestellnummer) ausgeben, deren Bruttobestellwert über 511,-- Euro liegt. Die Ausgabe soll auf 2 Nachkommastellen formatiert werden
 
@@ -172,7 +172,7 @@
 
 ```
 
-## Verknüpfung mehrerer Tabellen:
+## Verknüpfung mehrerer Tabellen
 
 ### 29. Welche Pflanzen haben bei dem Lieferanten aus 'Freiburg' eine Lieferzeit von max. 10 Tagen? Es soll eine Übersicht mit Artikelnummer, Pflanzenname, Artikelnummer des Lieferanten und der Lieferzeit ausgegeben werden
 
