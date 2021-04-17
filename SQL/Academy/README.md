@@ -113,7 +113,7 @@ SELECT Nachname, Stundensatz FROM Dozent WHERE Stundensatz > (SELECT Stundensatz
 ### 15. Listen Sie alle Teilnehmer mit Lehrgangsbeginn sowie dem jeweiligen Dozenten auf
 
 ```sql
-SELECT l.Beginn, d.Nachname as "Dozent", th.Nachname FROM Lehrgang l RIGHT JOIN Dozent d ON l.fkDozent = d.idDozent RIGHT JOIN Teilnahme tn ON l.idLehrgang = tn.fkLehrgang RIGHT JOIN Teilnehmer th ON tn.fkTeilnehmer = th.idTeilnehmer
+SELECT Lehrgang.Beginn, Dozent.Nachname as "Dozent", th.Nachname FROM Lehrgang l RIGHT JOIN Dozent d ON Lehrgang.fkDozent = Dozent.idDozent RIGHT JOIN Teilnahme tn ON Lehrgang.idLehrgang = Teilnahme.fkLehrgang RIGHT JOIN Teilnehmer th ON Teilnahme.fkTeilnehmer = Teilnahme.idTeilnehmer
 ```
 
 ### 16. Listen Sie alle Teilnehmer mit Name, PLZ und Ort auf, die einen Kurs bei "Schult" besuchen
