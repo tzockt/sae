@@ -114,16 +114,20 @@ SELECT Nachname, Stundensatz FROM Dozent WHERE Stundensatz > (SELECT Stundensatz
 
 ```sql
 SELECT Lehrgang.Beginn, Dozent.Nachname as "Dozent", th.Nachname FROM Lehrgang l RIGHT JOIN Dozent d ON Lehrgang.fkDozent = Dozent.idDozent RIGHT JOIN Teilnahme tn ON Lehrgang.idLehrgang = Teilnahme.fkLehrgang RIGHT JOIN Teilnehmer th ON Teilnahme.fkTeilnehmer = Teilnahme.idTeilnehmer
+
+Andere Lösung: SELECT Teilnehmer.Nachname, Beginn, Dozent.Nachname FROM Teilnehmer JOIN Teilnahme ON Teilnehmer.idTeilnehmer=Teilnahme.fkTeilnehmer JOIN Lehrgang ON Teilnahme.fkLehrgang=Lehrgang.idLehrgang JOIN Dozent ON Lehrgang.fkDozent=Dozent.idDozent
 ```
 
 ### 16. Listen Sie alle Teilnehmer mit Name, PLZ und Ort auf, die einen Kurs bei "Schult" besuchen
 
 ```sql
 SELECT t2.Nachname, t2.fkOrt as "PLZ", o.Ortsname, d.Nachname as "Dozent" FROM Lehrgang l RIGHT JOIN Dozent d ON l.fkDozent = d.idDozent RIGHT JOIN Teilnahme t ON l.idLehrgang = t.fkLehrgang RIGHT JOIN Teilnehmer t2 ON t.fkTeilnehmer = t2.idTeilnehmer RIGHT JOIN Ort o ON t2.fkOrt = o.idOrt WHERE  d.Nachname = "Schult"
+
+SELECT Teilnehmer.Nachname, Teilnehmer.fkOrt, Ort.Ortsname FROM Ort JOIN Teilnehmer ON Ort.idOrt=Teilnehmer.fkOrt JOIN Teilnahme ON Teilnehmer.idTeilnehmer=Teilnahme.fkTeilnehmer JOIN Lehrgang ON Teilnahme.fkLehrgang=Lehrgang.idLehrgang JOIN Dozent ON Lehrgang.fkDozent=Dozent.idDozent WHERE Dozent.Nachname LIKE 'Schult' ORDER BY Teilnehmer.Nachname ASC
 ```
 
 ### 17. Listen Sie für alle Dozenten den Lehrgangsbeginn ihrer Kurse auf. Dozenten, welche keine Lehrgänge anbieten, sollen auch ausgegeben werden
 
 ```sql
-SELECT d.Nachname , l.Beginn FROM Dozent d RIGHT JOIN Lehrgang l on d.idDozent = l.fkDozent ....?
+SELECT Dozent.idDozent, Dozent.Nachname ,Lehrgang.Beginn FROM academy.Dozent LEFT OUTER JOIN academy.Lehrgang ON Lehrgang.fkDozent = Dozent.idDozent
 ```
