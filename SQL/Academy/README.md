@@ -123,11 +123,13 @@ Andere Lösung: SELECT Teilnehmer.Nachname, Beginn, Dozent.Nachname FROM Teilneh
 ```sql
 SELECT t2.Nachname, t2.fkOrt as "PLZ", o.Ortsname, d.Nachname as "Dozent" FROM Lehrgang l RIGHT JOIN Dozent d ON l.fkDozent = d.idDozent RIGHT JOIN Teilnahme t ON l.idLehrgang = t.fkLehrgang RIGHT JOIN Teilnehmer t2 ON t.fkTeilnehmer = t2.idTeilnehmer RIGHT JOIN Ort o ON t2.fkOrt = o.idOrt WHERE  d.Nachname = "Schult"
 
-SELECT Teilnehmer.Nachname, Teilnehmer.fkOrt, Ort.Ortsname FROM Ort JOIN Teilnehmer ON Ort.idOrt=Teilnehmer.fkOrt JOIN Teilnahme ON Teilnehmer.idTeilnehmer=Teilnahme.fkTeilnehmer JOIN Lehrgang ON Teilnahme.fkLehrgang=Lehrgang.idLehrgang JOIN Dozent ON Lehrgang.fkDozent=Dozent.idDozent WHERE Dozent.Nachname LIKE 'Schult' ORDER BY Teilnehmer.Nachname ASC
+SELECT Teilnehmer.Nachname, Teilnehmer.fkOrt, Ort.Ortsname FROM Ort JOIN Teilnehmer ON Ort.idOrt=Teilnehmer.fkOrt JOIN Teilnahme ON Teilnehmer.idTeilnehmer=Teilnahme.fkTeilnehmer JOIN Lehrgang ON Teilnahme.fkLehrgang=Lehrgang.idLehrgang JOIN Dozent ON Lehrgang.fkDozent=Dozent.idDozent WHERE Dozent.Nachname LIKE 'Schult' ORDER BY Teilnehmer.Nachname ASC 
 ```
 
 ### 17. Listen Sie für alle Dozenten den Lehrgangsbeginn ihrer Kurse auf. Dozenten, welche keine Lehrgänge anbieten, sollen auch ausgegeben werden
 
 ```sql
 SELECT Dozent.idDozent, Dozent.Nachname ,Lehrgang.Beginn FROM academy.Dozent LEFT OUTER JOIN academy.Lehrgang ON Lehrgang.fkDozent = Dozent.idDozent
+
+SELECT Dozent.Nachname, Lehrgang.Beginn FROM Dozent LEFT OUTER JOIN Lehrgang ON Lehrgang.fkDozent=Dozent.idDozent ORDER BY Dozent.Nachname ASC
 ```
