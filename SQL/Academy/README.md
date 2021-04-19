@@ -49,6 +49,7 @@ SELECT Dozent.Nachname FROM Dozent WHERE Dozent.Stundensatz > 60.0 ORDER BY Doze
 
 ```sql
 SELECT Lehrgang.idLehrgang FROM Lehrgang RIGHT JOIN Inhalt ON Lehrgang.fkInhalt = Inhalt.idInhalt WHERE 250 > (Inhalt.Stundensatz*Inhalt.Dauer)
+Richtige Lösung: SELECT * FROM Inhalt where (stundensatz*dauer)<250 ORDER BY beschreibung
 ```
 
 ### 6. Geben Sie alle Teilnehmer aus, deren Namen mit "B" beginnen
