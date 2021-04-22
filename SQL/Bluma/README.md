@@ -53,13 +53,14 @@ SELECT LFR_NR, LFR_NAME, LFR_ORT FROM lieferanten RIGHT JOIN angebote ON LFR_NR 
 ### 9. Aus der Tabelle Bestellungen sollen Lieferantennummer und Lieferdatum ausgegeben werden. Darüber hinaus soll das Zahlungsdatum (Lieferdatum + 30 Tage) errechnet und angezeigt werden
 
 ```sql
-SELECT BST_LFR_NR, BST_LFR_DAT, ?.? as "Zahlungsdatum" FROM bestellungen;
+SELECT BST_LFR_NR, BST_LFR_DAT, adddate(BST_LFR_DAT,30) as "Zahlungsdatum" FROM bestellungen;
 ```
 
 ### 10. Die Preise sind noch als DM-Preise gespeichert. Die Preisangaben sollen in Euro umgewandelt werden (1 Euro = 1,95583 DM)
 
 ```sql
 SELECT (PFL_PREIS * 1.95583) as "Preis in Euronen" FROM pflanzen;
+SELECT POS_BST_PREIS, ROUND(POS_BST_PREIS/1.95583, 2) AS Euro FROM bestpositionen;
 ```
 
 ### 11. Den Bestellwert (brutto) in Euro für die Bestellung mit der Nummer 191 formatiert mit 2 Nachkommastellen ausgeben
@@ -247,7 +248,7 @@ SELECT pflanzen.PFL_NAME, (pflanzen.PFL_PREIS * 1.95583) as "Bruttopreis" FROM p
 ### 40. Berechnen Sie den durchschnittlichen Angebotspreis pro Artikel. Es sollen allerdings Artikel angezeigt werden, die niedriger als der oben berechnete Durchschnittspreis sind und deren Nummer zwischen 1 und 80 liegt. Die Ausgabe (Artikelnummer, Lieferantenname, Angebotspreis) ist nach Artikelnummer zu sortieren
 
 ```sql
-
+SELECT angebote.ANG_PFL_ART_NR, lieferanten.LFR_NAME, angebote.ANG_PREIS FROM angebote INNER JOIN pflanzen ON angebote.ANG_PFL_ART_NR = pflanzen.PFL_ART_NR INNER JOIN lieferanten ON angebote.ANG_LFR_NR = lieferanten.LFR_NR WHERE (SELECT AVG(angebote.ANG_PREIS) FROM angebote) > angebote.ANG_PREIS AND angebote.ANG_PFL_ART_NR BETWEEN 1 AND 80 ORDER BY angebote.ANG_PFL_ART_NR;
 ```
 
 ### 41. Welches ist der niedrigste Angebotspreis für die Pflanze mit der Artikelnummer 123? Ausgabe (Preis, Lieferantenummer)
