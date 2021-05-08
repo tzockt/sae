@@ -14,17 +14,17 @@ public static void main(String[] args) {
     }
 
     public static void personalNumberFist(String[] aPersonaldatenSatz, int iPosTrenner){
-        String [] aPersTeilDatein = new String[aPersonaldatenSatz.length];
+        String [] aPersTeilDatein;
         
         for (int i=0; i<aPersonaldatenSatz.length; i++){
-            aPersTeilDatein= aPersonaldatenSatz[i].split("|");
-            String parse = aPersonaldatenSatz[iPosTrenner] + "|";
+            aPersTeilDatein= aPersonaldatenSatz[i].split("\\|");
+            String parse = aPersTeilDatein[iPosTrenner] + "|";
             for (int b = 0; b < aPersTeilDatein.length; b++ ){
                 if (aPersTeilDatein[b].contains("_")) continue;
                 parse = parse + aPersTeilDatein[b] + "|";
             }
             
-            aPersonaldatenSatz[i] = parse;
+            aPersonaldatenSatz[i] = parse.substring(0,parse.length()-1);
         }
         System.out.println(Arrays.toString(aPersonaldatenSatz));
     }
